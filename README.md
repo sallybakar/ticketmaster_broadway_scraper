@@ -41,6 +41,7 @@ This script schedules the scraper to run automatically once every 24 hours.
 6. (Optional) Launch the Streamlit Dashboard
 To explore the data interactively via a web dashboard:
 streamlit run streamlit_app.py
+
 📅 Automation Details
 Scheduling implemented with the Python schedule library
 
