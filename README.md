@@ -31,11 +31,11 @@ Open main.py and update the following line with Apify API token:
 APIFY_TOKEN = "apify_api_ysLCjO9YEAopns9IuQGAPns7rn8kyQ0KKqZi"
 
 4. Run the Scraper Manually -:
-python main.py
+python main.py -
 This will generate broadway_shows.csv containing the latest Broadway show data.
 
 5. Automate Daily Scraping -:
-python scheduler.py
+python scheduler.py -
 This script schedules the scraper to run automatically once every 24 hours.
 
 6. (Optional) Launch the Streamlit Dashboard
