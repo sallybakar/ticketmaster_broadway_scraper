@@ -119,8 +119,8 @@ ticketmaster_broadway_scraper/
 ├── shows.db              # SQLite database (optional)
 
  Sample Output Format (CSV)
-Title	Date	Time	Venue	Image URL	Type	Details Link	Scraped At
-Ride and Dine with Us!	2025-05-22	19:00	Hard Rock Cafe Miami, Miami, FL	https://image.url/hamilton	Musical	https://ticket.link/hamilton	2025-05-22 10:00:00
+Show Title,Show Date,Show Image Link,Theatre Name/Venue,Performance,Show Type,Link to Full Show Details,Scraping Date
+Ride and Dine with Us!,Apr 30,https://s1.ticketm.net/dam/c/03e/e15ef00f-2c87-4421-ae61-d740851a703e_105891_RECOMENDATION_16_9.jpg,"Hard Rock Cafe Miami, Miami, FL",Apr 30,Unspecified,https://www.ticketweb.com/event/ride-and-dine-with-us-hard-rock-cafe-tickets/13384408?REFERRAL_ID=tmfeed,2025-05-25
 
  Deliverables Summary
 File	Description
