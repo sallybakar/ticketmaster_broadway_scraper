@@ -26,21 +26,23 @@ cd ticketmaster_broadway_scraper
 2. Install Required Packages
 pip install -r requirements.txt
 3. Configure Apify API Token
-Open broadway_scraper.py and update the following line with Apify API token:
+Open main.py and update the following line with Apify API token:
 
 APIFY_TOKEN = "apify_api_ysLCjO9YEAopns9IuQGAPns7rn8kyQ0KKqZi"
 
-4. Run the Scraper Manually
-python main.py
+4. Run the Scraper Manually -:
+python main.py -
 This will generate broadway_shows.csv containing the latest Broadway show data.
 
-5. Automate Daily Scraping
-python scheduler.py
+5. Automate Daily Scraping -:
+python scheduler.py -
 This script schedules the scraper to run automatically once every 24 hours.
 
 6. (Optional) Launch the Streamlit Dashboard
-To explore the data interactively via a web dashboard:
+To explore the data interactively via a web dashboard -:
 streamlit run streamlit_app.py
+
+
 📅 Automation Details
 Scheduling implemented with the Python schedule library
 
@@ -58,25 +60,25 @@ Sets a polite User-Agent through Apify API requests
 Runs only once per day to avoid overloading Ticketmaster servers
 
 📁 Project Deliverables
-main.py – Main scraper script using Apify API and saves to CSV and JSON
+main.py –: Main scraper script using Apify API and saves to CSV and JSON
 
-db_utils.py – SQLite helper functions for table creation and data insertion
+db_utils.py –: SQLite helper functions for table creation and data insertion
 
-broadway_scraper.py` – Loads scraped data from JSON and inserts it into the database
+broadway_scraper.py –: Loads scraped data from JSON and inserts it into the database
 
-load_to_db.py – Reads parsed JSON and loads valid entries into a SQLite database
+load_to_db.py –: Reads parsed JSON and loads valid entries into a SQLite database
 
-scheduler.py – Automates the scraper to run daily
+scheduler.py –: Automates the scraper to run daily
 
-streamlit_app.py – Optional Streamlit dashboard to visualize Broadway shows
+streamlit_app.py –: Optional Streamlit dashboard to visualize Broadway shows
 
-requirements.txt – All Python dependencies
+requirements.txt –: All Python dependencies
 
 README.md – Setup instructions, documentation, and usage guide
 
-broadway_shows.csv – Latest scraped and cleaned data
+broadway_shows.csv –: Latest scraped and cleaned data
 
-shows.db – SQLite database storing scraped show data
+shows.db –: SQLite database storing scraped show data
 
 📈 Sample Output Format (CSV)
 Title	Date	Time	Venue	Image URL	Type	Details Link	Scraped At
