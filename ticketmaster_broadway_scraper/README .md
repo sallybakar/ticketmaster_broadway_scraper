@@ -9,7 +9,7 @@ This project extracts detailed Broadway show information from **Ticketmaster** u
 - Stores data as **CSV**, **JSON**, and optionally in a **SQLite database**.
 - Offers a **Streamlit dashboard** for exploring and analyzing scraped shows.
 - Built with ethical scraping principles and scalable design.
-- Supports Slack notifications, deduplication
+- Supports Slack notifications, deduplication.
 
 ---
 
