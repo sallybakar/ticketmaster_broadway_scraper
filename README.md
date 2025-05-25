@@ -1,6 +1,7 @@
 #  Ticketmaster Broadway Scraper
 This project extracts detailed Broadway show information from **Ticketmaster** using the **Apify API**. It supports **automated daily scraping**, **CSV/JSON export**, optional **SQLite database storage**, and an interactive **Streamlit dashboard**.
 
+---
 
 ##  Project Overview
 
@@ -10,6 +11,7 @@ This project extracts detailed Broadway show information from **Ticketmaster** u
 - Built with ethical scraping principles and scalable design.
 - Supports Slack notifications, deduplication
 
+---
 
 ##  Features
 
@@ -29,11 +31,13 @@ This project extracts detailed Broadway show information from **Ticketmaster** u
 -  Visualized using a Streamlit dashboard (`main.py`)
 -  Anti-scraping measures: request throttling, retry logic, and ethical scraping practices
 
+---
 
 ##  Setup Instructions
 
 ### 1. Clone the Repository
 
+```bash
 git clone https://github.com/sallybakar/ticketmaster_broadway_scraper.git
 cd ticketmaster_broadway_scraper
 
@@ -42,26 +46,26 @@ cd ticketmaster_broadway_scraper
 pip install -r requirements.txt
 
  -  Contents of requirements.txt:
-requests
-schedule
-streamlit
-pandas
-sqlite3
-beautifulsoup4
+requests,
+schedule,
+streamlit,
+pandas,
+sqlite3,
+beautifulsoup4,
 
-3. Configure Apify API Token
+3. Configure Apify API Token:
 
 Open main.py or broadway_scraper.py and update:
 
 APIFY_TOKEN = "your_apify_api_token_here"
 
-4. Run the Scraper Manually
+4. Run the Scraper Manually:
 
-python main.py
+python broadway_scraper.py
 
 This will generate the latest broadway_shows.csv and broadway_shows.json in the output/YYYY-MM-DD folder.
 
-5. Automate Daily Scraping
+5. Automate Daily Scraping:
 
 To run the scraper automatically every 24 hours:
 
@@ -73,9 +77,9 @@ python scheduler.py
 
     Logs execution time in the console.
 
-6. (Optional) Launch the Streamlit Dashboard
+6. (Optional) Launch the Streamlit Dashboard:
 
-streamlit run streamlit_app.py
+streamlit run main.py
 
 Explore the data visually via filters, tables, and show previews.
 
@@ -102,12 +106,11 @@ Explore the data visually via filters, tables, and show previews.
  Project Structure
 
 ticketmaster_broadway_scraper/
-├── main.py               # Main scraper using Apify API (CSV + JSON output)
+├── main.py               # Creates a Streamlit dashboard that displays Broadway show data from a SQLite database.
 ├── scheduler.py          # Scheduler for daily scraping
-├── broadway_scraper.py   # JSON processor and metadata extractor
+├── broadway_scraper.py   # Main scraper using Apify API (CSV + JSON output + SQLite DB storage + Slack notification)
 ├── load_to_db.py         # Load JSON data into SQLite
 ├── db_utils.py           # Database setup & insertion logic
-├── streamlit_app.py      # (Optional) Streamlit dashboard
 ├── requirements.txt      # Required Python packages
 ├── README.md             # Documentation (this file)
 ├── output/
@@ -117,16 +120,16 @@ ticketmaster_broadway_scraper/
 
  Sample Output Format (CSV)
 Title	Date	Time	Venue	Image URL	Type	Details Link	Scraped At
-Ride and Dine with Us!	2025-05-22	19:00	Richard Rodgers Theatre	https://image.url/hamilton	Musical	https://ticket.link/hamilton	2025-05-22 10:00:00
+Ride and Dine with Us!	2025-05-22	19:00	Hard Rock Cafe Miami, Miami, FL	https://image.url/hamilton	Musical	https://ticket.link/hamilton	2025-05-22 10:00:00
 
  Deliverables Summary
 File	Description
-main.py -:	Main scraper using Apify API, saves CSV/JSON
+main.py -:	Creates a Streamlit dashboard that displays Broadway show data from a SQLite database
 scheduler.py -:	Automates the scraper daily
-broadway_scraper.py-:	Loads and processes JSON
+broadway_scraper.py-:	Main scraper using Apify API, saves CSV/JSON
 load_to_db.py -:	Inserts shows into SQLite database
 db_utils.py -:	Helper functions for DB table setup
-streamlit_app.py -:	Optional dashboard for data visualization
+streamlit (main.py) -:	Optional dashboard for data visualization
 shows.db -:	SQLite database of scraped entries
 broadway_shows.csv/json -:	Cleaned and exported Broadway show data
 README.md -:	Full documentation and setup guide
