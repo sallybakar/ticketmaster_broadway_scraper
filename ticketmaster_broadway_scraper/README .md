@@ -1,0 +1,136 @@
+#  Ticketmaster Broadway Scraper
+This project extracts detailed Broadway show information from **Ticketmaster** using the **Apify API**. It supports **automated daily scraping**, **CSV/JSON export**, optional **SQLite database storage**, and an interactive **Streamlit dashboard**.
+
+---
+
+##  Project Overview
+
+- Scrapes daily Broadway show data using Apify.
+- Stores data as **CSV**, **JSON**, and optionally in a **SQLite database**.
+- Offers a **Streamlit dashboard** for exploring and analyzing scraped shows.
+- Built with ethical scraping principles and scalable design.
+- Supports Slack notifications, deduplication
+
+---
+
+##  Features
+
+-  Extracts key show details:
+  - Show Title
+  - Show Date
+  - Show Image Link
+  - Theatre Name / Venue
+  - Performance Time
+  - Show Type (e.g., Musical, Play)
+  - Link to Full Show Details
+
+-  Saves data to CSV, JSON, and SQLite database
+-  Deduplicates and logs each scraping session with a timestamp
+-  Scheduled to run every 24 hours with `schedule.py`
+-  Slack notifications when new shows are detected
+-  Visualized using a Streamlit dashboard (`main.py`)
+-  Anti-scraping measures: request throttling, retry logic, and ethical scraping practices
+
+---
+
+##  Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/sallybakar/ticketmaster_broadway_scraper.git
+cd ticketmaster_broadway_scraper
+
+2. Install Required Packages
+
+pip install -r requirements.txt
+
+ -  Contents of requirements.txt:
+requests
+schedule
+streamlit
+pandas
+sqlite3
+beautifulsoup4
+
+3. Configure Apify API Token
+
+Open main.py or broadway_scraper.py and update:
+
+APIFY_TOKEN = "your_apify_api_token_here"
+
+4. Run the Scraper Manually
+
+python main.py
+
+This will generate the latest broadway_shows.csv and broadway_shows.json in the output/YYYY-MM-DD folder.
+
+5. Automate Daily Scraping
+
+To run the scraper automatically every 24 hours:
+
+python scheduler.py
+
+    Uses the schedule library.
+
+    Automatically stores scraped data into CSV/JSON and optionally into SQLite.
+
+    Logs execution time in the console.
+
+6. (Optional) Launch the Streamlit Dashboard
+
+streamlit run streamlit_app.py
+
+Explore the data visually via filters, tables, and show previews.
+
+ Automation Details
+
+     Runs once every 24 hours using the schedule library.
+
+     Deduplication logic to avoid re-saving shows already scraped.
+
+     Console logs include scrape timestamps for traceability.
+
+ Ethical Scraping Practices
+
+     Uses Apify’s public API, avoiding direct HTML scraping.
+
+     Respects source website with polite user-agent and throttling.
+
+     Limits each request to 50 shows per run.
+
+     Runs once daily to reduce server load.
+
+     Provides transparent data logging and deduplication.
+
+ Project Structure
+
+ticketmaster_broadway_scraper/
+├── main.py               # Main scraper using Apify API (CSV + JSON output)
+├── scheduler.py          # Scheduler for daily scraping
+├── broadway_scraper.py   # JSON processor and metadata extractor
+├── load_to_db.py         # Load JSON data into SQLite
+├── db_utils.py           # Database setup & insertion logic
+├── streamlit_app.py      # (Optional) Streamlit dashboard
+├── requirements.txt      # Required Python packages
+├── README.md             # Documentation (this file)
+├── output/
+│   └── YYYY-MM-DD/
+│       └── broadway_shows_TIMESTAMP.csv/json
+├── shows.db              # SQLite database (optional)
+
+ Sample Output Format (CSV)
+Title	Date	Time	Venue	Image URL	Type	Details Link	Scraped At
+Ride and Dine with Us!	2025-05-22	19:00	Richard Rodgers Theatre	https://image.url/hamilton	Musical	https://ticket.link/hamilton	2025-05-22 10:00:00
+
+ Deliverables Summary
+File	Description
+main.py -:	Main scraper using Apify API, saves CSV/JSON
+scheduler.py -:	Automates the scraper daily
+broadway_scraper.py-:	Loads and processes JSON
+load_to_db.py -:	Inserts shows into SQLite database
+db_utils.py -:	Helper functions for DB table setup
+streamlit_app.py -:	Optional dashboard for data visualization
+shows.db -:	SQLite database of scraped entries
+broadway_shows.csv/json -:	Cleaned and exported Broadway show data
+README.md -:	Full documentation and setup guide
